@@ -21,7 +21,7 @@ export default function Churchscreen({ navigation }) {
       </View>
       <ScrollView style={styles.links}>
         <View style={styles.containerLinks}>
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO)}>
             <AntDesign name="infocirlce" size={34} color={colors.gold} />
             <AppText style={styles.info}>Info en regels over deze kerk</AppText>
           </TouchableOpacity>
