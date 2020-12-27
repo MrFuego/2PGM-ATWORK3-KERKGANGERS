@@ -3,6 +3,7 @@ import AppText from './AppText'
 import Screen from './Screen'
 import ChurchListItem from './ChurchListItem'
 import EventListItem from './EventListItem'
+import AppTitle from './AppTitle'
 
 export {
   AppLogo,
@@ -10,4 +11,5 @@ export {
   Screen,
   ChurchListItem,
   EventListItem,
+  AppTitle,
 }
