@@ -2,11 +2,12 @@ import React from 'react'
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { AppLogo, AppText } from '../components';
 import colors from '../config/colors'
+import routes from '../utils/routes';
 
-export default function Welcomescreen() {
+export default function Welcomescreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate(routes.START)}>
         <AppLogo />
       </TouchableOpacity>
       <View style={styles.block}>

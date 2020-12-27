@@ -1,13 +1,20 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
-import { AppText, Screen } from '../components'
+import { StyleSheet, View } from 'react-native'
+import { AppText, ChurchListItem, Screen } from '../components'
+import colors from '../config/colors'
 
 export default function Startscreen() {
   return (
     <Screen>
-      <AppText>Kies uw kerk</AppText>
+      <AppText style={styles.title}>Kies uw kerk</AppText>
+      <ChurchListItem title="Sint-Pieterskerk" />
     </Screen>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  title: {
+    color: colors.white,
+    marginTop: 10,
+  }
+})
