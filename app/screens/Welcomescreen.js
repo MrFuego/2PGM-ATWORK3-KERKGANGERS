@@ -19,6 +19,8 @@ export default function Welcomescreen() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.grey,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
