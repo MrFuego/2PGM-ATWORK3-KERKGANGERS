@@ -10,5 +10,4 @@ const AuthNavigator = () => (
     <Stack.Screen name="Start" component={Startscreen} />
   </Stack.Navigator>
 )
-
 export default AuthNavigator;
