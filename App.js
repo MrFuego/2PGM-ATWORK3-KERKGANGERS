@@ -1,8 +1,11 @@
 import React from 'react';
-import Welcomescreen from './app/screens/Welcomescreen';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 export default function App() {
   return (
-    <Welcomescreen />
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
   );
 }
