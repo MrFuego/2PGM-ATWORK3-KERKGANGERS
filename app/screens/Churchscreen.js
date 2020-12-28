@@ -25,7 +25,7 @@ export default function Churchscreen({ navigation }) {
             <AntDesign name="infocirlce" size={34} color={colors.gold} />
             <AppText style={styles.info}>Info en regels over deze kerk</AppText>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.CODE)}>
             <Entypo name="camera" size={34} color={colors.gold} />
             <AppText style={styles.info}>QR code scanner</AppText>
           </TouchableOpacity>
