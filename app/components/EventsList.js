@@ -5,7 +5,7 @@ import EventListItem from './EventListItem'
 
 export default function EventsList() {
   return (
-    <ScrollView>
+    <ScrollView style={styles.height}>
       <View style={styles.container}>
         <EventListItem date={'01-01-2021'} name={'Lorem Ipsum'} />
         <EventListItem date={'25-01-2021'} name={'Lorem Ipsum'} />
@@ -15,6 +15,9 @@ export default function EventsList() {
 }
 
 const styles = StyleSheet.create({
+  height: {
+    height: '100%',
+  },
   container: {
     marginBottom: 20,
   },

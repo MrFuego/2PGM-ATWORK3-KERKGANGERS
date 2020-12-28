@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
   containerLinks: {
     marginRight: 20,
     marginLeft: 20,
-    marginBottom: 40,
   },
   button: {
     height: 25,
@@ -65,7 +64,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   block: {
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
     height: 50,
