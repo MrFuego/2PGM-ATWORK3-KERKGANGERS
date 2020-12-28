@@ -4,4 +4,5 @@ export default Object.freeze({
   CHURCH: 'Church',
   INFO: 'Info',
   EVENT: 'Event',
+  CODE: 'Code',
 })
