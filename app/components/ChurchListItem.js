@@ -1,34 +1,69 @@
-import React from 'react'
-import {
-  StyleSheet,
+import { StatusBar } from 'expo-status-bar';
+import React, {useState, useEffect } from 'react';
+import { 
+  StyleSheet, 
+  Text,
+  View, 
+  SafeAreaView,
+  FlatList,
+  ActivityIndicator,
   TouchableOpacity,
   ImageBackground,
-} from 'react-native'
+} from 'react-native';
+
 import colors from '../config/colors'
 import AppText from './AppText'
 
-export default function ChurchListItem({ title }) {
+export default function ChurchListItem() {
+
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/Table%201?api_key=keyQSuOk7cheTM4ji')
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json.records)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
-    <TouchableOpacity style={styles.card}>
-      <ImageBackground source={{ uri: 'https://www.visitflanders.com/nl/binaries/024421fd-4d5c-4d79-9f06-ab5d91523e42_tcm14-132143.jpg' }} style={styles.image}>
-        <AppText style={styles.text}>
-          {title}
-        </AppText>
-      </ImageBackground>
-    </TouchableOpacity>
-  )
+    <SafeAreaView style={{marginBottom: 120,}}>
+        {isLoading ? <ActivityIndicator/> : (
+          <View>
+            <FlatList
+              data={data}
+              keyExtractor={({ id }, index) => id}
+              renderItem={({ item }) => (
+                <TouchableOpacity style={styles.card}>
+                  <ImageBackground source={{uri: item.fields.foto}} style={styles.image}>
+                    <Text style={styles.text}>
+                      {item.fields.kerkNaam}
+                    </Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+              )}
+            />
+          </View>
+        )}
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   card: {
     marginTop: 30,
-  },
+  }, 
+
   text: {
     opacity: 1,
     color: colors.white,
     paddingTop: 50,
     paddingBottom: 50,
-    fontSize: 34,
+    fontSize: 29,
+    fontWeight:'bold',
     textAlign: 'center',
     backgroundColor: 'rgba(215, 178, 112, 0.7)',
   },
@@ -39,4 +74,4 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 15,
   },
-})
+});

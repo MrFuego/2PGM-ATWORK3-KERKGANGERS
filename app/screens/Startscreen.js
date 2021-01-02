@@ -7,7 +7,7 @@ export default function Startscreen() {
   return (
     <Screen>
       <AppText style={styles.title}>Kies uw kerk</AppText>
-      <ChurchListItem title="Sint-Pieterskerk" />
+      <ChurchListItem/>
     </Screen>
   )
 }
