@@ -8,7 +8,7 @@ import routes from '../utils/routes';
 
 export default function Churchscreen({ navigation, route }) {
 
-  const { name, image  } = route.params;
+  const { name, image, shortDescription  } = route.params;
 
   return (
     <View style={styles.container}>
@@ -20,7 +20,7 @@ export default function Churchscreen({ navigation, route }) {
       <Image source={{ uri:(image) }} style={styles.image} />
       <View style={styles.containerInfo}>
         <AppText style={styles.title}>{(name)}</AppText>
-        <AppText style={styles.desc}>{(image)}</AppText>
+        <AppText style={styles.desc}>{(shortDescription)}</AppText>
       </View>
       <ScrollView style={styles.links}>
         <View style={styles.containerLinks}>
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
   },
   desc: {
     fontSize: 14,
-    fontWeight: 'bold',
     marginTop: 30,
     color: colors.white,
   },

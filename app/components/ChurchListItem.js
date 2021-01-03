@@ -39,7 +39,7 @@ export default function ChurchListItem({onPress}) {
               data={data}
               keyExtractor={({ id }) => id}
               renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => {navigation.navigate('Church', {name: item.fields.kerkNaam, image: item.fields.foto})}} style={styles.card}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Church', {name: item.fields.kerkNaam, image: item.fields.foto, shortDescription:item.fields.shortDescription})}} style={styles.card}>
                   <ImageBackground source={{uri: item.fields.foto}} style={styles.image}>
                     <Text style={styles.text}>
                       {item.fields.kerkNaam}
