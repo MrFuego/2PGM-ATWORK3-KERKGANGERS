@@ -30,7 +30,6 @@ export default function ChurchListItem({onPress}) {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
-
   return (
     <SafeAreaView style={{marginBottom: 120,}}>
         {isLoading ? <ActivityIndicator/> : (
