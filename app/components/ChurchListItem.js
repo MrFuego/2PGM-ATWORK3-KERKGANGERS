@@ -56,9 +56,8 @@ export default function ChurchListItem({onPress}) {
 
 const styles = StyleSheet.create({
   card: {
-    marginTop: 30,
+    marginBottom: 20,
   }, 
-
   text: {
     opacity: 1,
     color: colors.white,
