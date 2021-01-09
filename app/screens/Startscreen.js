@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native'
 import { AppText, ChurchListItem, Screen } from '../components'
 import colors from '../config/colors'
@@ -8,7 +8,7 @@ export default function Startscreen({ navigation }) {
   return (
     <Screen>
       <AppText style={styles.title}>Kies uw kerk</AppText>
-      <ChurchListItem title="Sint-Baafs" onPress={() => navigation.navigate(routes.CHURCH)} />
+      <ChurchListItem  />
     </Screen>
   )
 }
