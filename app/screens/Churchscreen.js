@@ -6,7 +6,10 @@ import { AntDesign, Entypo } from '@expo/vector-icons';
 import colors from '../config/colors'
 import routes from '../utils/routes';
 
-export default function Churchscreen({ navigation }) {
+export default function Churchscreen({ navigation, route }) {
+
+  const { name, image, shortDescription, id, churchnr  } = route.params;
+
   return (
     <View style={styles.container}>
       <View style={styles.containerInfo}>
@@ -14,14 +17,14 @@ export default function Churchscreen({ navigation }) {
           <AntDesign name="close" size={24} color={colors.gold} />
         </TouchableOpacity>
       </View>
-      <Image source={{ uri: 'https://www.visitflanders.com/nl/binaries/024421fd-4d5c-4d79-9f06-ab5d91523e42_tcm14-132143.jpg' }} style={styles.image} />
+      <Image source={{ uri:(image) }} style={styles.image} />
       <View style={styles.containerInfo}>
-        <AppText style={styles.title}>Sint-Baafs</AppText>
-        <AppText style={styles.desc}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nibh felis, auctor et tempus eu, luctus eget lacus.</AppText>
+        <AppText style={styles.title}>{(name)}</AppText>
+        <AppText style={styles.desc}>{(shortDescription)}</AppText>
       </View>
       <ScrollView style={styles.links}>
         <View style={styles.containerLinks}>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO)}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO, {id:id})}>
             <AntDesign name="infocirlce" size={34} color={colors.gold} />
             <AppText style={styles.info}>Info en regels over deze kerk</AppText>
           </TouchableOpacity>
@@ -33,7 +36,7 @@ export default function Churchscreen({ navigation }) {
             <Entypo name="map" size={34} color={colors.gold} />
             <AppText style={styles.info}>Grondplan van deze kerk</AppText>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT)}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT, {id:id})} >
             <Entypo name="calendar" size={34} color={colors.gold} />
             <AppText style={styles.info}>Evenementen</AppText>
           </TouchableOpacity>
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
   containerLinks: {
     marginRight: 20,
     marginLeft: 20,
-    marginBottom: 40,
+    marginBottom: 5,
   },
   button: {
     height: 25,
@@ -83,7 +86,6 @@ const styles = StyleSheet.create({
   },
   desc: {
     fontSize: 14,
-    fontWeight: 'bold',
     marginTop: 30,
     color: colors.white,
   },

@@ -7,8 +7,7 @@ export default function EventsList() {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <EventListItem date={'01-01-2021'} name={'Lorem Ipsum'} />
-        <EventListItem date={'25-01-2021'} name={'Lorem Ipsum'} />
+        <EventListItem />
       </View>
     </ScrollView>
   )

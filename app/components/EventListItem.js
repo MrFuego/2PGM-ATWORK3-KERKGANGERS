@@ -1,32 +1,64 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import AppText from './AppText'
+import React, {useState, useEffect } from 'react';
+import { StyleSheet, View, FlatList, SafeAreaView, TouchableOpacity, Text, Linking } from 'react-native'
 import colors from '../config/colors'
 
-export default function EventListItem({ date, name }) {
+export default function EventListItem() {
+
+  // const navigation = useNavigation();
+
+  const [data, setData] = useState([/*jsonData*/]);
+
+  useEffect(() => {
+    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/events?api_key=keyQSuOk7cheTM4ji')
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json.records)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
-    <View style={styles.block}>
-      <AppText style={styles.date}>{date}</AppText>
-      <AppText style={styles.event}>{name}</AppText>
-    </View>
+    <SafeAreaView style={{marginBottom: 100,}}>
+        <View>
+          <FlatList
+            data={data}
+            keyExtractor={({ id }) => id}
+            renderItem={({ item }) => (
+              <TouchableOpacity style={styles.card} onPress={() => Linking.openURL("https://mkgent.be/activiteiten/")}>
+                  <Text style={styles.event}>
+                    {item.fields.eventName}
+                  </Text>
+                  <Text style={styles.date}>
+                    {item.fields.date}
+                  </Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  block: {
-    backgroundColor: colors.gold,
-    borderRadius: 20,
+  card: {
+    backgroundColor: '#4D4D4D',
+    borderRadius: 3,
     padding: 10,
-    marginBottom: 20,
-  },
-  date: {
-    color: colors.white,
-    fontSize: 14,
+    marginBottom:20,
+    borderStyle: 'solid',
+    borderColor: colors.gold,
+    borderWidth: 2,
   },
   event: {
+    color: colors.white,
+    fontSize: 20,
+    marginBottom: 7,
     fontWeight: 'bold',
-    textTransform: 'uppercase',
-    color: colors.grey,
-    marginTop: 10,
+    textDecorationLine: "underline",
+    textDecorationStyle: "solid",
   },
+  date: {
+    color: colors.gold,
+  }
 })

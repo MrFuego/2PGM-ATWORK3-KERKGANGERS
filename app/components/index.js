@@ -7,6 +7,7 @@ import EventListItem from './EventListItem'
 import AppTitle from './AppTitle'
 import RulesList from './RulesList'
 import RulesListItem from './RulesListItem'
+import Loading from './Loading'
 
 export {
   AppLogo,
@@ -18,4 +19,5 @@ export {
   AppTitle,
   RulesList,
   RulesListItem,
+  Loading,
 }
