@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+
 import colors from '../config/colors';
 
 export default function ChurchListItem({onPress}) {
@@ -21,7 +22,7 @@ export default function ChurchListItem({onPress}) {
   const [data, setData] = useState([/*jsonData*/]);
 
   useEffect(() => {
-    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/kerken?api_key=keyQSuOk7cheTM4ji')
+    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/Table%201?api_key=keyQSuOk7cheTM4ji')
       .then((response) => response.json())
       .then((json) => {
         setData(json.records)

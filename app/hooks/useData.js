@@ -26,7 +26,7 @@ export const useData = ()=>{
   ] = useReducer(reducer, initialState)
 
   const fetchData = () => {
-    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/kerken?api_key=keyQSuOk7cheTM4ji')
+    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/Table%201?api_key=keyQSuOk7cheTM4ji')
       .then((response) => response.json())
       .then((data) => {
         dispatch({type:'success', payload:data.records})

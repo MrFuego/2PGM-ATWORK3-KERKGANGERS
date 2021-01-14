@@ -7,7 +7,8 @@ import colors from '../config/colors'
 import routes from '../utils/routes';
 
 export default function Churchscreen({ navigation, route }) {
-  const { name, image, shortDescription, id, churchnr  } = route.params;
+
+  const { name, image, shortDescription, id  } = route.params;
 
   return (
     <View style={styles.container}>

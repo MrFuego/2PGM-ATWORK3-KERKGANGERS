@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
 import { Screen, AppText, Loading } from '../components'
@@ -25,10 +25,8 @@ export default function Infoscreen({ navigation, route }) {
   useEffect(() => {
     console.log(churchData)
   },[churchData])
-
-  if (!churchData) return <View style={styles.load}>
-     <Loading/>
-    </View>
+  
+  if (!churchData) return <Text>loading</Text>
   else return (
     <Screen>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
