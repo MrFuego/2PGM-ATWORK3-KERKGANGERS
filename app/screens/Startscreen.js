@@ -1,8 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native'
-import { AppText, ChurchListItem, Screen } from '../components'
+import { AppText, ChurchList, Screen } from '../components'
 import colors from '../config/colors'
-import routes from '../utils/routes';
 
 export default function Startscreen({ navigation }) {
   return (
@@ -16,6 +15,8 @@ export default function Startscreen({ navigation }) {
 const styles = StyleSheet.create({
   title: {
     color: colors.white,
+    fontWeight: 'bold',
     marginTop: 10,
+    marginBottom: 30,
   }
 })

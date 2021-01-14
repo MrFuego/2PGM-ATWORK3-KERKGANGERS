@@ -1,11 +1,21 @@
 import AppLogo from './AppLogo'
 import AppText from './AppText'
 import Screen from './Screen'
-import ChurchListItem from './ChurchListItem'
+import ChurchList from './ChurchList'
+import EventsList from './EventsList'
+import AppTitle from './AppTitle'
+import RulesList from './RulesList'
+import RulesListItem from './RulesListItem'
+import Loading from './Loading'
 
 export {
   AppLogo,
   AppText,
   Screen,
-  ChurchListItem,
+  ChurchList,
+  EventsList,
+  AppTitle,
+  RulesList,
+  RulesListItem,
+  Loading,
 }

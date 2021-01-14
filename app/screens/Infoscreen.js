@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
-import { Screen, AppText } from '../components'
+import { Screen, AppText, Loading } from '../components'
 import colors from '../config/colors'
 import routes from '../utils/routes';
 import { useData } from '../hooks/useData';
@@ -25,7 +25,7 @@ export default function Infoscreen({ navigation, route }) {
   useEffect(() => {
     console.log(churchData)
   },[churchData])
-
+  
   if (!churchData) return <Text>loading</Text>
   else return (
     <Screen>
@@ -80,4 +80,13 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 14,
   },
+  load:{
+    color:colors.gold,
+    backgroundColor: colors.grey,
+    textAlign: 'center',
+    justifyContent:'center',
+    alignItems:'center',
+    flex:1,
+
+  }
 })

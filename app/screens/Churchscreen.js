@@ -28,7 +28,7 @@ export default function Churchscreen({ navigation, route }) {
             <AntDesign name="infocirlce" size={34} color={colors.gold} />
             <AppText style={styles.info}>Info en regels over deze kerk</AppText>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.CODE)}>
             <Entypo name="camera" size={34} color={colors.gold} />
             <AppText style={styles.info}>QR code scanner</AppText>
           </TouchableOpacity>
@@ -36,7 +36,7 @@ export default function Churchscreen({ navigation, route }) {
             <Entypo name="map" size={34} color={colors.gold} />
             <AppText style={styles.info}>Grondplan van deze kerk</AppText>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT, {id:id})} >
             <Entypo name="calendar" size={34} color={colors.gold} />
             <AppText style={styles.info}>Evenementen</AppText>
           </TouchableOpacity>
@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   block: {
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
     height: 50,

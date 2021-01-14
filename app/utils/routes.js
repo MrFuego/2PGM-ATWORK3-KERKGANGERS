@@ -3,4 +3,6 @@ export default Object.freeze({
   START: 'Start',
   CHURCH: 'Church',
   INFO: 'Info',
+  EVENT: 'Event',
+  CODE: 'Code',
 })

@@ -30,7 +30,6 @@ export default function ChurchListItem({onPress}) {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
-
   return (
     <SafeAreaView style={{marginBottom: 120,}}>
         {isLoading ? <ActivityIndicator/> : (
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 30,
   }, 
-
   text: {
     opacity: 1,
     color: colors.white,
