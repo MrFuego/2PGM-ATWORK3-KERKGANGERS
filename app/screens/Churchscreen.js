@@ -7,8 +7,7 @@ import colors from '../config/colors'
 import routes from '../utils/routes';
 
 export default function Churchscreen({ navigation, route }) {
-
-  const { name, image, shortDescription  } = route.params;
+  const { name, image, shortDescription, id, churchnr  } = route.params;
 
   return (
     <View style={styles.container}>
@@ -24,7 +23,7 @@ export default function Churchscreen({ navigation, route }) {
       </View>
       <ScrollView style={styles.links}>
         <View style={styles.containerLinks}>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO)}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO, {id:id})}>
             <AntDesign name="infocirlce" size={34} color={colors.gold} />
             <AppText style={styles.info}>Info en regels over deze kerk</AppText>
           </TouchableOpacity>
@@ -36,7 +35,7 @@ export default function Churchscreen({ navigation, route }) {
             <Entypo name="map" size={34} color={colors.gold} />
             <AppText style={styles.info}>Grondplan van deze kerk</AppText>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT)}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT, {id:id})} >
             <Entypo name="calendar" size={34} color={colors.gold} />
             <AppText style={styles.info}>Evenementen</AppText>
           </TouchableOpacity>

@@ -7,7 +7,7 @@ export default function Startscreen({ navigation }) {
   return (
     <Screen>
       <AppText style={styles.title}>Kies uw kerk</AppText>
-      <ChurchList navigation={navigation} />
+      <ChurchListItem  />
     </Screen>
   )
 }

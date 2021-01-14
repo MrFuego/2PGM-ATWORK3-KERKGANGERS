@@ -5,6 +5,8 @@ import ChurchList from './ChurchList'
 import EventsList from './EventsList'
 import AppTitle from './AppTitle'
 import RulesList from './RulesList'
+import RulesListItem from './RulesListItem'
+import Loading from './Loading'
 
 export {
   AppLogo,
@@ -14,4 +16,6 @@ export {
   EventsList,
   AppTitle,
   RulesList,
+  RulesListItem,
+  Loading,
 }

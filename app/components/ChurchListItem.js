@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-
 import colors from '../config/colors';
 
 export default function ChurchListItem({onPress}) {
@@ -22,7 +21,7 @@ export default function ChurchListItem({onPress}) {
   const [data, setData] = useState([/*jsonData*/]);
 
   useEffect(() => {
-    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/Table%201?api_key=keyQSuOk7cheTM4ji')
+    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/kerken?api_key=keyQSuOk7cheTM4ji')
       .then((response) => response.json())
       .then((json) => {
         setData(json.records)
@@ -38,7 +37,7 @@ export default function ChurchListItem({onPress}) {
               data={data}
               keyExtractor={({ id }) => id}
               renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => {navigation.navigate('Church', {name: item.fields.kerkNaam, image: item.fields.foto, shortDescription:item.fields.shortDescription})}} style={styles.card}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Church', {name: item.fields.kerkNaam, image: item.fields.foto, shortDescription:item.fields.shortDescription, id:item.id,})}} style={styles.card}>
                   <ImageBackground source={{uri: item.fields.foto}} style={styles.image}>
                     <Text style={styles.text}>
                       {item.fields.kerkNaam}
@@ -55,7 +54,7 @@ export default function ChurchListItem({onPress}) {
 
 const styles = StyleSheet.create({
   card: {
-    marginBottom: 20,
+    marginTop: 30,
   }, 
   text: {
     opacity: 1,
