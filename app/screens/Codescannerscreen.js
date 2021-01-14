@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { AntDesign } from '@expo/vector-icons';
+import { Screen } from '../components'
+import colors from '../config/colors'
+import routes from '../utils/routes';
 
-export default function Codescannerscreen() {
+export default function Codescannerscreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -26,18 +31,32 @@ export default function Codescannerscreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
-      {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
-    </View>
+    <Screen>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
+        <AntDesign name="arrowleft" size={24} color={colors.gold} />
+      </TouchableOpacity>
+      <View style={styles.container}>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        // style={StyleSheet.absoluteFillObject}
+        />
+        {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  button: {
+    height: 25,
+    width: 25,
+    marginBottom: 20,
+  },
+  desc: {
+    color: colors.white,
+    fontSize: 14,
   },
 })
