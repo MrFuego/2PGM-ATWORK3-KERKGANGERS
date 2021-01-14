@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
@@ -11,22 +11,22 @@ export default function Infoscreen({ navigation, route }) {
 
   const [churchData, setChurchData] = useState(null)
 
-  const {id} = route.params;
+  const { id } = route.params;
 
-  const {state:{data, error}, refetch} = useData()
+  const { state: { data, error }, refetch } = useData()
 
   useEffect(() => {
     if (data) {
-      const record = data.filter(({id:recordId}) => recordId === id)
+      const record = data.filter(({ id: recordId }) => recordId === id)
       setChurchData(record[0])
     }
   }, [data])
 
   useEffect(() => {
     console.log(churchData)
-  },[churchData])
-  
-  if (!churchData) return <Text>loading</Text>
+  }, [churchData])
+
+  if (!churchData) return <Screen style={styles.loading}><Text>loading</Text></Screen>
   else return (
     <Screen>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
@@ -80,13 +80,16 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 14,
   },
-  load:{
-    color:colors.gold,
+  load: {
+    color: colors.gold,
     backgroundColor: colors.grey,
     textAlign: 'center',
-    justifyContent:'center',
-    alignItems:'center',
-    flex:1,
-
-  }
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  loading: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })
