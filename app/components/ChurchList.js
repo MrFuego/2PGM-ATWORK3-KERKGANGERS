@@ -5,7 +5,6 @@ import ChurchListItem from './ChurchListItem'
 import routes from '../utils/routes';
 
 export default function ChurchList({ navigation }) {
-  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -15,11 +14,10 @@ export default function ChurchList({ navigation }) {
         setData(json.records)
       })
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
   }, []);
 
   return (
-    <View style={styles.list}>
+    <View>
       <FlatList
         data={data}
         keyExtractor={({ id }) => id}
@@ -33,9 +31,3 @@ export default function ChurchList({ navigation }) {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  list: {
-    marginBottom: 100,
-  },
-})

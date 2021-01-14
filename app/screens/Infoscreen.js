@@ -1,33 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native'
+import React from 'react';
+import { StyleSheet, View } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
-import { Screen, AppText, Loading } from '../components'
+import { Screen, AppText, } from '../components'
 import colors from '../config/colors'
 import routes from '../utils/routes';
-import { useData } from '../hooks/useData';
 
 export default function Infoscreen({ navigation, route }) {
+  const params = route.params;
 
-  const [churchData, setChurchData] = useState(null)
-
-  const { id } = route.params;
-
-  const { state: { data, error }, refetch } = useData()
-
-  useEffect(() => {
-    if (data) {
-      const record = data.filter(({ id: recordId }) => recordId === id)
-      setChurchData(record[0])
-    }
-  }, [data])
-
-  useEffect(() => {
-    console.log(churchData)
-  }, [churchData])
-
-  if (!churchData) return <Screen style={styles.loading}><Text>loading</Text></Screen>
-  else return (
+  return (
     <Screen>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
         <AntDesign name="arrowleft" size={24} color={colors.gold} />
@@ -35,7 +17,7 @@ export default function Infoscreen({ navigation, route }) {
       <ScrollView>
         <View style={styles.container}>
           <AppText style={styles.title}>Info</AppText>
-          <AppText style={styles.desc}>{churchData.fields.info}</AppText>
+          <AppText style={styles.desc}>{params.fields.info}</AppText>
         </View>
         <View style={styles.container}>
           <AppText style={styles.title}>Regels</AppText>

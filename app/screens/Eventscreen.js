@@ -13,7 +13,7 @@ export default function Eventscreen({ navigation }) {
         <AntDesign name="arrowleft" size={24} color={colors.gold} />
       </TouchableOpacity>
       <AppTitle title={'Evenementen'} />
-      <EventsList />
+      <EventsList navigation={navigation} />
     </Screen>
   )
 }

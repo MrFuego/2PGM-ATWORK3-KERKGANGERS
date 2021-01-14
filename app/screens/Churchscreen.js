@@ -3,8 +3,9 @@ import { StyleSheet, View, Image } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { AppText } from '../components'
 import { AntDesign, Entypo } from '@expo/vector-icons';
-import colors from '../config/colors'
 
+import colors from '../config/colors'
+import routes from '../utils/routes';
 
 export default function Churchscreen({ navigation, route }) {
   const params = route.params;
@@ -16,14 +17,14 @@ export default function Churchscreen({ navigation, route }) {
           <AntDesign name="close" size={24} color={colors.gold} />
         </TouchableOpacity>
       </View>
-      <Image source={{ uri: (params.image) }} style={styles.image} />
+      <Image source={{ uri: (params.fields.foto) }} style={styles.image} />
       <View style={styles.containerInfo}>
-        {/* <AppText style={styles.title}>{(name)}</AppText>
-        <AppText style={styles.desc}>{(shortDescription)}</AppText> */}
+        <AppText style={styles.title}>{params.fields.kerkNaam}</AppText>
+        <AppText style={styles.desc}>{params.fields.shortDescription}</AppText>
       </View>
       <ScrollView style={styles.links}>
-        {/* <View style={styles.containerLinks}>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO, { id: id })}>
+        <View style={styles.containerLinks}>
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO, params)}>
             <AntDesign name="infocirlce" size={34} color={colors.gold} />
             <AppText style={styles.info}>Info en regels over deze kerk</AppText>
           </TouchableOpacity>
@@ -31,15 +32,15 @@ export default function Churchscreen({ navigation, route }) {
             <Entypo name="camera" size={34} color={colors.gold} />
             <AppText style={styles.info}>QR code scanner</AppText>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.block}>
+          {/* <TouchableOpacity style={styles.block}>
             <Entypo name="map" size={34} color={colors.gold} />
             <AppText style={styles.info}>Grondplan van deze kerk</AppText>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT, { id: id })} >
+          </TouchableOpacity> */}
+          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT)} >
             <Entypo name="calendar" size={34} color={colors.gold} />
             <AppText style={styles.info}>Evenementen</AppText>
           </TouchableOpacity>
-        </View> */}
+        </View>
       </ScrollView>
     </View>
   )

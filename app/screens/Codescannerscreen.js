@@ -31,23 +31,30 @@ export default function Codescannerscreen({ navigation }) {
   }
 
   return (
-    <Screen>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
-        <AntDesign name="arrowleft" size={24} color={colors.gold} />
-      </TouchableOpacity>
+    <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
-        <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        // style={StyleSheet.absoluteFillObject}
-        />
-        {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
+          <AntDesign name="arrowleft" size={24} color={colors.gold} />
+        </TouchableOpacity>
+        <View style={styles.container}>
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          // style={StyleSheet.absoluteFillObject}
+          />
+          {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+        </View>
       </View>
-    </Screen>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginRight: 20,
+    marginLeft: 20,
+  },
+  screen: {
+    paddingTop: Constants.statusBarHeight,
     flex: 1,
   },
   button: {
