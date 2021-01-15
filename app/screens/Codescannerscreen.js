@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { AntDesign } from '@expo/vector-icons';
-import { Screen } from '../components'
+import Constants from 'expo-constants'
 import colors from '../config/colors'
 import routes from '../utils/routes';
 

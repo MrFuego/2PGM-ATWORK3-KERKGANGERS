@@ -4,6 +4,7 @@
     "slug": "2PGM-ATWORK3-KERKGANGERS",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./app/assets/icon.png",
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
