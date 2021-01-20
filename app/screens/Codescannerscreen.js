@@ -8,26 +8,34 @@ import colors from '../config/colors'
 import routes from '../utils/routes';
 
 export default function Codescannerscreen({ navigation }) {
-  const [hasPermission, setHasPermission] = useState(null);
+  const [permission, setPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
   useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
+      setPermission(status === 'granted');
     })();
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleScanned = ({ type, data }) => {
     setScanned(true);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
 
-  if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
+  if (permission === null) {
+    return <SafeAreaView>
+      <View style={styles.access}>
+        <Text>Gelieve toegang te geven tot camera</Text>
+      </View>
+    </SafeAreaView>;
   }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+  if (permission === false) {
+    return <SafeAreaView>
+      <View style={styles.access}>
+        <Text>Geen toegang tot camera</Text>
+      </View>
+    </SafeAreaView>;
   }
 
   return (
@@ -38,8 +46,7 @@ export default function Codescannerscreen({ navigation }) {
         </TouchableOpacity>
         <View style={styles.container}>
           <BarCodeScanner
-            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          // style={StyleSheet.absoluteFillObject}
+            onBarCodeScanned={scanned ? undefined : handleScanned}
           />
           {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
         </View>
@@ -49,6 +56,11 @@ export default function Codescannerscreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  access: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
   container: {
     marginRight: 20,
     marginLeft: 20,

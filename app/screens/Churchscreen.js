@@ -17,29 +17,31 @@ export default function Churchscreen({ navigation, route }) {
           <AntDesign name="close" size={24} color={colors.gold} />
         </TouchableOpacity>
       </View>
-      <Image source={{ uri: (params.fields.foto) }} style={styles.image} />
-      <View style={styles.containerInfo}>
-        <AppText style={styles.title}>{params.fields.kerkNaam}</AppText>
-        <AppText style={styles.desc}>{params.fields.shortDescription}</AppText>
-      </View>
-      <ScrollView style={styles.links}>
-        <View style={styles.containerLinks}>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO, params)}>
-            <AntDesign name="infocirlce" size={34} color={colors.gold} />
-            <AppText style={styles.info}>Info en regels over deze kerk</AppText>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.CODE)}>
-            <Entypo name="camera" size={34} color={colors.gold} />
-            <AppText style={styles.info}>QR code scanner</AppText>
-          </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.block}>
-            <Entypo name="map" size={34} color={colors.gold} />
-            <AppText style={styles.info}>Grondplan van deze kerk</AppText>
-          </TouchableOpacity> */}
-          <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT)} >
-            <Entypo name="calendar" size={34} color={colors.gold} />
-            <AppText style={styles.info}>Evenementen</AppText>
-          </TouchableOpacity>
+      <ScrollView>
+        <Image source={{ uri: (params.fields.foto) }} style={styles.image} />
+        <View style={styles.containerInfo}>
+          <AppText style={styles.title}>{params.fields.kerkNaam}</AppText>
+          <AppText style={styles.desc}>{params.fields.shortDescription}</AppText>
+        </View>
+        <View style={styles.links}>
+          <View style={styles.containerLinks}>
+            <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.INFO, params)}>
+              <AntDesign name="infocirlce" size={34} color={colors.gold} />
+              <AppText style={styles.info}>Info en regels over deze kerk</AppText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.CODE)}>
+              <Entypo name="camera" size={34} color={colors.gold} />
+              <AppText style={styles.info}>QR code scanner</AppText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.MAP)}>
+              <Entypo name="map" size={34} color={colors.gold} />
+              <AppText style={styles.info}>Grondplan van deze kerk</AppText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT)} >
+              <Entypo name="calendar" size={34} color={colors.gold} />
+              <AppText style={styles.info}>Evenementen</AppText>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>

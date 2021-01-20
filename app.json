@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alecmeganck99.2PGM-ATWORK3-KERKGANGERS"
     },
     "android": {
       "adaptiveIcon": {
