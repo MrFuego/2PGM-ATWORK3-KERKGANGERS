@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
-import { Screen, AppText, } from '../components'
+import { Screen, AppText, AppTitle, RulesList, } from '../components'
 import colors from '../config/colors'
 import routes from '../utils/routes';
 
@@ -16,15 +16,12 @@ export default function Infoscreen({ navigation, route }) {
       </TouchableOpacity>
       <ScrollView>
         <View style={styles.container}>
-          <AppText style={styles.title}>Info</AppText>
+          <AppTitle title='Info' />
           <AppText style={styles.desc}>{params.fields.info}</AppText>
         </View>
         <View style={styles.container}>
-          <AppText style={styles.title}>Regels</AppText>
-          <View style={styles.block}>
-            <AppText style={styles.subTitle}>Regel 1</AppText>
-            <AppText style={styles.desc}>{params.fields.rules}</AppText>
-          </View>
+          <AppTitle title='Regels' />
+          <RulesList />
         </View>
       </ScrollView>
     </Screen>

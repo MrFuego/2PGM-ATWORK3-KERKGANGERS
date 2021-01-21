@@ -1,17 +1,32 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import React, { useState, useEffect } from 'react'
+import { View } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import RulesListItem from './RulesListItem'
 
 export default function RulesList() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.airtable.com/v0/appAEVbXaAREzjeRr/rules?api_key=keybeKoDob9FKy4GK')
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json.records)
+      })
+      .catch((error) => console.error(error))
+  }, []);
+
   return (
-    <ScrollView>
-      <RulesListItem subTitle={'Regel 1'} desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nibh felis, auctor et tempus eu, luctus eget lacus. Nam egestas nibh vitae lorem maximus, vel tempus nibh ultricies. Vivamus hendrerit ut nunc id vehicula. Nam fringilla tortor eget nisi luctus, eget faucibus tellus cursus. Pellentesque nulla erat, mattis ac arcu id, aliquam elementum augue. Proin semper eu quam in accumsan. Sed et nisl venenatis, aliquam eros et, rhoncus nulla.'} />
-      <RulesListItem subTitle={'Regel 2'} desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nibh felis, auctor et tempus eu, luctus eget lacus. Nam egestas nibh vitae lorem maximus, vel tempus nibh ultricies. Vivamus hendrerit ut nunc id vehicula. Nam fringilla tortor eget nisi luctus, eget faucibus tellus cursus. Pellentesque nulla erat, mattis ac arcu id, aliquam elementum augue. Proin semper eu quam in accumsan. Sed et nisl venenatis, aliquam eros et, rhoncus nulla.'} />
-    </ScrollView>
+    <View>
+      <FlatList
+        data={data}
+        keyExtractor={({ id }) => id}
+        renderItem={({ item }) => (
+          <RulesListItem
+            subTitle={item.fields.RuleNr}
+            desc={item.fields.Rule}
+          />
+        )}
+      />
+    </View>
   )
 }
-
-const styles = StyleSheet.create({
-
-})

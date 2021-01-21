@@ -12,7 +12,7 @@ export default function Eventscreen({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(routes.CHURCH)}>
         <AntDesign name="arrowleft" size={24} color={colors.gold} />
       </TouchableOpacity>
-      <AppTitle title={'Evenementen'} />
+      <AppTitle title='Evenementen' />
       <EventsList navigation={navigation} />
     </Screen>
   )

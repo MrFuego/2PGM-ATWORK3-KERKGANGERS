@@ -33,10 +33,6 @@ export default function Churchscreen({ navigation, route }) {
               <Entypo name="camera" size={34} color={colors.gold} />
               <AppText style={styles.info}>QR code scanner</AppText>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.MAP)}>
-              <Entypo name="map" size={34} color={colors.gold} />
-              <AppText style={styles.info}>Grondplan van deze kerk</AppText>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.block} onPress={() => navigation.navigate(routes.EVENT)} >
               <Entypo name="calendar" size={34} color={colors.gold} />
               <AppText style={styles.info}>Evenementen</AppText>

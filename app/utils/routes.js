@@ -5,5 +5,4 @@ export default Object.freeze({
   INFO: 'Info',
   EVENT: 'Event',
   CODE: 'Code',
-  MAP: 'Map',
 })
