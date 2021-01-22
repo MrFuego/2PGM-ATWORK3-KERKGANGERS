@@ -9,7 +9,6 @@ export default function Startscreen({ navigation }) {
       <View style={styles.box}>
         <ChurchList navigation={navigation} />
       </View>
-      {/* <AppText style={styles.title}>Kies uw kerk</AppText> */}
     </Screen>
   )
 }
